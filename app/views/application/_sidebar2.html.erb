@@ -1,0 +1,44 @@
+<div class="d-flex flex-column flex-shrink-0 py-3 bg-dark text-white vh-100">
+  <div class="d-flex align-items-center justify-content-center py-2">
+    <%= link_to "", root_path, class: "" %>
+  </div>
+  <hr />
+
+  <ul class="nav nav-pills flex-column mb-auto"
+      hx-target="#side-main" 
+      hx-swap="innerHTML"
+      hx-replace-url="true"
+    >
+    <li 
+      class="my-1 nav-link text-white <%= 'active' if current_page?(cats_path) %>"
+      hx-get="<%= cats_path %>"
+      hx-on:htmx:before-request="htmx.takeClass(this, 'active')"
+    >
+        <span class="me-2">&#x1f431;</span><span>ねこ</span>
+    </li>
+    <li 
+      class="my-1 nav-link text-white <%= 'active' if current_page?(dogs_path) %>"
+      hx-get="<%= dogs_path %>"
+      hx-on:htmx:before-request="htmx.takeClass(this, 'active')"
+    >
+      <span class="me-2">&#x1f436;</span><span>いぬ</span>
+    </li>
+  </ul>
+</div>
+<script>
+  /*
+  $(function() {
+      $('.nav-item > a').click( function(){
+        $('.nav-link').removeClass('active');
+        $(this).addClass('active');
+      })
+  })
+
+      hx-on:click="htmx.takeClass(event.target.closest('ul li'), 'active')"
+      hx-on:click="htmx.takeClass(this, 'active')"
+      hx-on::before-request="htmx.takeClass(this, 'active')"
+      hx-on-htmx-before-request="htmx.takeClass(this, 'active')"
+      hx-on="htmx:beforeRequest: htmx.takeClass(this, 'active')"
+ */
+</script>
+

@@ -1,0 +1,6 @@
+<%# ラベル、バリデーションエラー、クラスはbootstrap_formが自動で %>
+<%= bootstrap_form_with model: cat, html: { novalidate: true } do |f| %>
+    <%= f.text_field :name %>
+    <%= f.number_field :age %>
+    <%= f.primary %>
+<% end %>

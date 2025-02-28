@@ -1,0 +1,26 @@
+<div class="d-flex flex-column flex-shrink-0 py-3 bg-dark text-white vh-100">
+  <div class="d-flex align-items-center justify-content-center py-2">
+    <%= link_to "", root_path, class: "" %>
+  </div>
+  <hr />
+
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <%= htmx_href(sidebar_link_to(cats_path, "neko", "ねこ"), '#side-main') %>
+    </li>
+    <li class="nav-item">
+      <%# sidebar_link_to( dogs_path, "inu", "いぬ") %>
+      <%= htmx_href(sidebar_link_to(dogs_path, "inu", "いぬ"), '#side-main') %>
+    </li>
+
+  </ul>
+</div>
+<script>
+  $(function() {
+      $('.nav-item > a').click( function(){
+        $('.nav-link').removeClass('active');
+        $(this).addClass('active');
+      })
+  })
+</script>
+

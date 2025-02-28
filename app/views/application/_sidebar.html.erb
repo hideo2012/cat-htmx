@@ -1,0 +1,47 @@
+<div class="d-flex flex-column flex-shrink-0 py-3 bg-dark text-white vh-100">
+  <div class="d-flex align-items-center justify-content-center py-2">
+    <%= link_to "", root_path, class: "" %>
+  </div>
+  <hr />
+
+  <ul class="nav nav-pills flex-column mb-auto"
+      hx-target="#side-main" 
+      hx-swap="innerHTML"
+      hx-select="#side-main"
+      hx-on:click="htmx.takeClass(event.target.closest('li'),'active')"
+      hx-replace-url="true">
+
+    <li 
+       hx-get="<%= cats_path %>"
+       class="my-1 nav-link text-white <%= 'active' if current_page?(cats_path) %>">
+        <span class="me-2">&#x1f431;</span><span>ねこ</span>
+    </li>
+
+    <li 
+       hx-get="<%= dogs_path %>"
+       class="my-1 nav-link text-white <%= 'active' if current_page?(dogs_path) %>">
+        <span class="me-2">&#x1f436;</span><span>いぬ</span>
+    </li>
+</div>
+<script>
+  /*
+  $(function() {
+      $('.nav-item > a').click( function(){
+        $('.nav-link').removeClass('active');
+        $(this).addClass('active');
+      })
+  })
+
+ ok
+      hx-on:click="htmx.takeClass(event.target.closest('li'), 'active')"
+      hx-on:click="htmx.takeClass(event.target.closest('ul li'), 'active')"
+      hx-on:click="htmx.takeClass(
+        htmx.closest(event.target, 'ul li'), 'active')"
+      hx-on:click="htmx.removeClass('.active', 'active')
+                   htmx.addClass( event.target.closest('li a'), 'active')"
+NG
+      hx-on:click="htmx.takeClass(event.target, 'active')"
+
+
+ */
+</script>

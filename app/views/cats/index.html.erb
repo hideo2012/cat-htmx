@@ -1,0 +1,53 @@
+<h4 class="fw-bold">
+  <span class="me-1">nya-</span>
+  <span>ねこ</span>
+</h4>
+
+<div class="card shadow mt-3" id="main">
+  <div class="card-header">
+    <%= icon_with_text("search", "検索条件") %>
+  </div>
+
+  <div class="card-body"
+    hx-target="#cats-list" 
+    hx-select="#cats-list" 
+    hx-swap="innerHTML"
+    hx-replace-url="true">
+    
+    <% html_form = search_form_for @search do |f| %>
+      <div class="row g3 mb-3">
+        <div class="col-4 col-xl-2">
+          <%= f.label :name_cont, "名前", class: "form-label" %>
+          <%= f.search_field  :name_cont, class: "form-control" %>
+        </div>
+        <div class="col-4 col-xl-2">
+          <%= f.label :age_eq, "年齢",  class: "form-label" %>
+          <%= f.search_field  :age_eq , class: "form-control" %>
+        </div>
+        <div class="col-4 d-flex align-items-end">
+          <%= button_tag(icon_with_text("search", "検索"), 
+                         class: "btn btn-primary me-1") %>
+          <a class="btn btn-outline-secondary" 
+             hx-get="<%= cats_path %>" 
+             hx-on:click="event.target.closest('form').reset()">リセット</a>
+        </div>
+      </div>
+    <% end %>
+    <%= to_htmx html_form  %>
+  </div><!-- end of card-body -->
+</div>
+
+<div class="card shadow mt-3">
+  <div class="card-header">
+    <%= icon_with_text("table", "一覧") %>
+  </div>
+
+  <div class="card-body mx-3" id="cats-list"
+    hx-target="#cats-list" 
+    hx-select="#cats-list" 
+    hx-swap="innerHTML"
+    hx-replace-url="true">
+
+    <%= render partial: "list" %>
+  </div>
+</div>
